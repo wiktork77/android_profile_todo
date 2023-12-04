@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/editFragment"
+        android:icon="@drawable/ic_edit_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/nav_option1" />
+    <item
+        android:id="@+id/mainFragment"
+        android:icon="@drawable/ic_home_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/nav_option2" />
+    <item
+        android:id="@+id/todosFragment"
+        android:icon="@drawable/ic_todo_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/nav_option3" />
+</menu>
