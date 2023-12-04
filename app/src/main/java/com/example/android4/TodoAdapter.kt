@@ -1,10 +1,12 @@
 package com.example.android4
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 
 class TodoAdapter(
@@ -47,9 +49,10 @@ class TodoAdapter(
         }
 
         holder.itemView.setOnClickListener { _ ->
-            println("nr $position")
-            data.removeAt(position)
-            notifyDataSetChanged()
+            val bundle = Bundle().apply {
+                putSerializable("item", currentTodo)
+            }
+            Navigation.findNavController(holder.itemView.parent as View).navigate(R.id.todoToDescription, bundle)
         }
     }
 

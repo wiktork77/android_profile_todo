@@ -1,5 +1,7 @@
 package com.example.android4
 
+import java.io.Serializable
+
 class Todo(
     val title: String,
     val subTitle: String,
@@ -8,7 +10,7 @@ class Todo(
     val dueTo: String,
     val importance: Int,
     val paid: Boolean
-) {
+): Serializable {
 }
 
 enum class Importance {
