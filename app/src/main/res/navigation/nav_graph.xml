@@ -38,7 +38,7 @@
             android:id="@+id/editToMain"
             app:destination="@id/mainFragment" />
         <action
-            android:id="@+id/editToTodos"
+            android:id="@+id/action_editFragment_to_todosFragment"
             app:destination="@id/todosFragment" />
     </fragment>
 </navigation>

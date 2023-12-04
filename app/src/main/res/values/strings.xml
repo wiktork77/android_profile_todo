@@ -6,13 +6,23 @@
     <string name="navigation_drawer_open">a</string>
     <string name="navigation_drawer_close">b</string>
 
+    <dimen name="fragment_header_size">36sp</dimen>
+
+
+    <!-- Rv values -->
+    <string name="todos_fragment_title">Todo</string>
+    <dimen name="rv_icon_width">52dp</dimen>
+    <dimen name="rv_icon_height">52dp</dimen>
+    <dimen name="rv_main_title_size">24sp</dimen>
+    <dimen name="rv_sub_title_size">16sp</dimen>
+    <dimen name="rv_date_size">12sp</dimen>
+    <dimen name="rv_category_size">20sp</dimen>
+
 
     <!-- Menu values -->
     <string name="nav_option1">Edit</string>
     <string name="nav_option2">Home</string>
     <string name="nav_option3">Todo</string>
-
-
 
 
 </resources>

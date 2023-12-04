@@ -5,9 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,10 +13,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [TodosFragment.newInstance] factory method to
+ * Use the [DescriptionFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class TodosFragment : Fragment() {
+class DescriptionFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -37,17 +34,7 @@ class TodosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_todos, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val rv: RecyclerView = view.findViewById(R.id.rvTodos)
-        val repo: DataRepository = DataRepository.getInstance()
-        val data = repo.getData()
-        val adapter: TodoAdapter = TodoAdapter(data)
-        rv.adapter = adapter
-        rv.layoutManager = LinearLayoutManager(requireContext())
+        return inflater.inflate(R.layout.fragment_description, container, false)
     }
 
     companion object {
@@ -57,12 +44,12 @@ class TodosFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment TodosFragment.
+         * @return A new instance of fragment DescriptionFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            TodosFragment().apply {
+            DescriptionFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
