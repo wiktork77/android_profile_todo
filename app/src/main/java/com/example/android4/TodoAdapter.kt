@@ -8,10 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import java.io.Serializable
 
 class TodoAdapter(
     private val data: MutableList<Todo>
-): RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
+): RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(), Serializable {
 
 
     class TodoViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -51,9 +52,15 @@ class TodoAdapter(
         holder.itemView.setOnClickListener { _ ->
             val bundle = Bundle().apply {
                 putSerializable("item", currentTodo)
+                putSerializable("adapter", this@TodoAdapter)
             }
             Navigation.findNavController(holder.itemView.parent as View).navigate(R.id.todoToDescription, bundle)
         }
+    }
+
+    fun addTodo(todo: Todo) {
+        data.add(todo)
+        notifyDataSetChanged()
     }
 
 

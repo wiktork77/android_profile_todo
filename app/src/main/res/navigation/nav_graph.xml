@@ -31,6 +31,9 @@
         <action
             android:id="@+id/todoToDescription"
             app:destination="@id/descriptionFragment" />
+        <action
+            android:id="@+id/todosToAdd"
+            app:destination="@id/addTodoFragment" />
     </fragment>
     <fragment
         android:id="@+id/editFragment"
@@ -57,6 +60,21 @@
             app:destination="@id/mainFragment" />
         <action
             android:id="@+id/descriptionToEdit"
+            app:destination="@id/editFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTodoFragment"
+        android:name="com.example.android4.AddTodoFragment"
+        android:label="fragment_add_todo"
+        tools:layout="@layout/fragment_add_todo" >
+        <action
+            android:id="@+id/addToTodos"
+            app:destination="@id/todosFragment" />
+        <action
+            android:id="@+id/action_addTodoFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_addTodoFragment_to_editFragment"
             app:destination="@id/editFragment" />
     </fragment>
 </navigation>

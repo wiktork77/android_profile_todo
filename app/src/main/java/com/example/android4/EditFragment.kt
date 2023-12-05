@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,6 +41,20 @@ class EditFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_edit, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val vpAdapter = MyPagerAdapter2(this)
+        val vPager: ViewPager2 = view.findViewById(R.id.vpPager) as ViewPager2
+        vPager.adapter = vpAdapter
+        val tabLayout: TabLayout = view.findViewById(R.id.tlTabLayout)
+        val tabLM =
+            TabLayoutMediator(tabLayout, vPager, object: TabLayoutMediator.TabConfigurationStrategy {
+                override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
+                    tab.text = "Tab ${(position + 1)}"
+                }
+            })
+        tabLM.attach()
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of

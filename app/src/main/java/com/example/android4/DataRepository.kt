@@ -3,7 +3,7 @@ package com.example.android4
 import kotlin.random.Random
 
 class DataRepository {
-    val LIST_SIZE = 20
+    val LIST_SIZE = 10
     companion object {
         private var INSTANCE: DataRepository? = null
         fun getInstance(): DataRepository {
@@ -16,7 +16,7 @@ class DataRepository {
 
     fun getData(): MutableList<Todo> {
         val data: MutableList<Todo> = mutableListOf()
-        for (i in 0..LIST_SIZE) {
+        for (i in 0..<LIST_SIZE) {
             val title = getRandomTitle()
             val subtitle = getRandomTaskSubtitle()
             val category: Category = getRandomCategory()

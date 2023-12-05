@@ -11,6 +11,10 @@ class Todo(
     val importance: Int,
     val paid: Boolean
 ): Serializable {
+    fun isValid(): Boolean {
+        return !title.isEmpty() && !subTitle.isEmpty() && !description.isEmpty()
+                && !dueTo.isEmpty()
+    }
 }
 
 enum class Importance {

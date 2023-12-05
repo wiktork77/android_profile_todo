@@ -72,7 +72,11 @@ class DescriptionFragment : Fragment() {
         }
         date.text = data.dueTo
         backBtn.setOnClickListener { _ ->
-            Navigation.findNavController(view).navigate(R.id.descriptionToTodo)
+            val adapter: TodoAdapter = arguments?.getSerializable("adapter") as TodoAdapter
+            val bundle = Bundle().apply {
+                putSerializable("adapter", adapter)
+            }
+            Navigation.findNavController(view).navigate(R.id.descriptionToTodo, bundle)
         }
 
     }
