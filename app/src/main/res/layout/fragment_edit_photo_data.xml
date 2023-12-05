@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditPhotoDataFragment">
+
+    <TableLayout
+        android:id="@+id/tlAvatars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/av1"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/image_ape" />
+
+            <ImageView
+                android:id="@+id/av2"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/image_castle" />
+
+            <ImageView
+                android:id="@+id/av3"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/image_flower" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/av4"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/image_orang" />
+
+            <ImageView
+                android:id="@+id/av5"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/image_rails" />
+
+            <ImageView
+                android:id="@+id/av6"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/image_rock" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/av7"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/image_sun" />
+
+            <ImageView
+                android:id="@+id/av8"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/image_wood" />
+
+            <ImageView
+                android:id="@+id/av9"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/image_cat" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Pick Avatar"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/tlAvatars"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

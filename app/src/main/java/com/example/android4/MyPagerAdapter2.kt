@@ -11,8 +11,8 @@ class MyPagerAdapter2(f: Fragment): FragmentStateAdapter(f) {
 
     override fun createFragment(position: Int): Fragment {
         when (position) {
-            0 -> return TodosFragment.newInstance("", "")
-            1 -> return MainFragment.newInstance("", "")
+            0 -> return EditTextDataFragment.newInstance("", "")
+            1 -> return EditPhotoDataFragment.newInstance("", "")
         }
         return MainFragment.newInstance("", "")
     }

@@ -12,6 +12,7 @@ import android.widget.SeekBar
 import android.widget.Spinner
 import android.widget.Switch
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.Navigation
 
 // TODO: Rename parameter arguments, choose names that match
@@ -72,7 +73,7 @@ class AddTodoFragment : Fragment() {
                 }
                 Navigation.findNavController(view).navigate(R.id.addToTodos, bundle)
             } else {
-                println("not valid")
+                Toast.makeText(requireContext(), "You must fill all inputs!", Toast.LENGTH_SHORT).show()
             }
         }
 

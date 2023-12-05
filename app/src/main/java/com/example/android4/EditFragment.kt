@@ -47,10 +47,11 @@ class EditFragment : Fragment() {
         val vPager: ViewPager2 = view.findViewById(R.id.vpPager) as ViewPager2
         vPager.adapter = vpAdapter
         val tabLayout: TabLayout = view.findViewById(R.id.tlTabLayout)
+        val tabTitles = listOf<String>("Personal data", "Avatar")
         val tabLM =
             TabLayoutMediator(tabLayout, vPager, object: TabLayoutMediator.TabConfigurationStrategy {
                 override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
-                    tab.text = "Tab ${(position + 1)}"
+                    tab.text = tabTitles[position]
                 }
             })
         tabLM.attach()

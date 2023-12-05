@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
+import android.widget.TableLayout
+import android.widget.TableRow
+import androidx.navigation.Navigation
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,10 +18,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [MainFragment.newInstance] factory method to
+ * Use the [EditPhotoDataFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MainFragment : Fragment() {
+class EditPhotoDataFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -37,25 +39,36 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        return inflater.inflate(R.layout.fragment_edit_photo_data, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val name: TextView = view.findViewById(R.id.tvMainName)
-        val info: TextView = view.findViewById(R.id.tvMainInfo)
-        val avatar: ImageView = view.findViewById(R.id.ivMainAvatar)
-        val sp = requireActivity().getSharedPreferences("userData", Context.MODE_PRIVATE)
-        if (sp.contains("name")) {
-            name.text = sp.getString("name", "Name")
-        }
-        if (sp.contains("info")) {
-            info.text = sp.getString("info", "Info")
-        }
-        if (sp.contains("avatar")) {
-            val res = sp.getInt("avatar", R.drawable.ic_other_image)
-            println(res)
-            avatar.setImageResource(res)
+        val avatars: TableLayout = view.findViewById(R.id.tlAvatars)
+        val resources = mapOf<Int, Int>(
+            0 to R.drawable.image_ape,
+            1 to R.drawable.image_castle,
+            2 to R.drawable.image_flower,
+            3 to R.drawable.image_orang,
+            4 to R.drawable.image_rails,
+            5 to R.drawable.image_rock,
+            6 to R.drawable.image_sun,
+            7 to R.drawable.image_wood,
+            8 to R.drawable.image_cat
+        )
+        for (i in 0..<avatars.childCount) {
+            val child = avatars.getChildAt(i) as TableRow
+            for (j in 0..<child.childCount) {
+                val element = child.getChildAt(j) as ImageView
+                element.setOnClickListener { _ ->
+                    val sp = requireActivity().getSharedPreferences("userData", Context.MODE_PRIVATE)
+                    val spEdit = sp.edit()
+                    val res: Int = resources[(i*3) + j]!!
+                    spEdit.putInt("avatar", res)
+                    spEdit.commit()
+                    Navigation.findNavController(view).navigate(R.id.editToMain)
+                }
+            }
         }
     }
 
@@ -66,12 +79,12 @@ class MainFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment MainFragment.
+         * @return A new instance of fragment EditPhotoDataFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            MainFragment().apply {
+            EditPhotoDataFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
