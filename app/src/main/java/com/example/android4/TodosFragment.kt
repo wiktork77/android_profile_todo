@@ -60,6 +60,12 @@ class TodosFragment : Fragment() {
         val fab: FloatingActionButton = view.findViewById(R.id.fabAddTodo)
         rv.adapter = adapter
         rv.layoutManager = LinearLayoutManager(requireContext())
+        rv.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        )
         fab.setOnClickListener { _ ->
             val bundle = Bundle().apply {
                 putSerializable("adapter", adapter)

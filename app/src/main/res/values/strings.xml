@@ -11,8 +11,8 @@
 
     <!-- Rv values -->
     <string name="todos_fragment_title">Todo</string>
-    <dimen name="rv_icon_width">52dp</dimen>
-    <dimen name="rv_icon_height">52dp</dimen>
+    <dimen name="rv_icon_width">32dp</dimen>
+    <dimen name="rv_icon_height">32dp</dimen>
     <dimen name="rv_main_title_size">24sp</dimen>
     <dimen name="rv_sub_title_size">16sp</dimen>
     <dimen name="rv_date_size">12sp</dimen>
@@ -24,6 +24,9 @@
     <string name="nav_option2">Home</string>
     <string name="nav_option3">Todo</string>
 
+    <string name="icon_green">#008000</string>
+    <string name="icon_orange">#FFA500</string>
+    <string name="icon_red">#FF0000</string>
 
     <string-array name="categories">
         <item>Car</item>

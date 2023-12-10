@@ -1,5 +1,6 @@
 package com.example.android4
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,8 +21,8 @@ class TodoAdapter(
         val mainTitle: TextView = itemView.findViewById(R.id.tvItemMainTitle)
         val subTitle: TextView = itemView.findViewById(R.id.tvItemSubTitle)
         val categoryIcon: ImageView = itemView.findViewById(R.id.ivCategoryIcon)
-        val date: TextView = itemView.findViewById(R.id.tvItemDate)
-        val paidIcon: ImageView = itemView.findViewById(R.id.ivPaid)
+//        val date: TextView = itemView.findViewById(R.id.tvItemDate)
+//        val paidIcon: ImageView = itemView.findViewById(R.id.ivPaid)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
@@ -43,14 +44,15 @@ class TodoAdapter(
         holder.apply {
             mainTitle.text = currentTodo.title
             subTitle.text = currentTodo.subTitle
-            date.text = currentTodo.dueTo
-            applyImportanceIcon(importanceIcon, currentTodo.importance)
-            applyPaidIcon(paidIcon, currentTodo.paid)
+//            date.text = currentTodo.dueTo
+            Utilities.applyImportanceIcon(importanceIcon, currentTodo.importance)
+//            applyPaidIcon(paidIcon, currentTodo.paid)
             applyCategoryIcon(categoryIcon, currentTodo.category)
         }
 
         holder.itemView.setOnClickListener { _ ->
             val bundle = Bundle().apply {
+                putInt("position", position)
                 putSerializable("item", currentTodo)
                 putSerializable("adapter", this@TodoAdapter)
             }
@@ -63,22 +65,11 @@ class TodoAdapter(
         notifyDataSetChanged()
     }
 
-
-    private fun applyImportanceIcon(iv: ImageView, importance: Int) {
-        var resource = R.drawable.ic_not_urgent_todo
-        if (importance in 3..4) {
-            resource = R.drawable.ic_normal_todo
-        } else if (importance == 5) {
-            resource = R.drawable.ic_urgent_todo
-        }
-        iv.setImageResource(resource)
+    fun editTodo(position: Int, todo: Todo) {
+        data[position] = todo
+        notifyDataSetChanged()
     }
 
-    private fun applyPaidIcon(iv: ImageView, paid:Boolean) {
-        if (paid) {
-            iv.setImageResource(R.drawable.ic_money_icon)
-        }
-    }
 
     private fun applyCategoryIcon(iv: ImageView, category: Category) {
         var resource = when (category) {

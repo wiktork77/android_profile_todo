@@ -6,15 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".DescriptionFragment">
 
+    <Button
+        android:id="@+id/btnBackDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:text="TextView"
-        android:textSize="34sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,121 +32,276 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/tvTitle"
-        app:layout_constraintStart_toStartOf="@+id/tvTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
-    <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:ellipsize="end"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textSize="18sp"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnBackDesc"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle"
+        app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:id="@+id/tvCategoryDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvTitle" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <ImageView
-        android:id="@+id/ivCategoryDescIcon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="18dp"
-        tools:src="@tools:sample/avatars"
-        app:layout_constraintEnd_toEndOf="@+id/tvCategoryDesc"
-        app:layout_constraintStart_toStartOf="@+id/tvCategoryDesc"
-        app:layout_constraintTop_toBottomOf="@+id/tvCategoryDesc" />
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Task details"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvImportance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="18dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/tvCategoryDesc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvCategoryDesc" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/ivImportanceIconDesc"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="18dp"
-        tools:src="@tools:sample/avatars"
-        app:layout_constraintEnd_toEndOf="@+id/tvImportance"
-        app:layout_constraintStart_toStartOf="@+id/tvImportance"
-        app:layout_constraintTop_toBottomOf="@+id/tvImportance" />
+                <TextView
+                    android:id="@+id/textView33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    android:text="Description"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Importance"
-        app:layout_constraintEnd_toEndOf="@+id/tvDescription"
-        app:layout_constraintStart_toStartOf="@+id/tvDescription"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+                <EditText
+                    android:id="@+id/etDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
-    <RatingBar
-        android:id="@+id/rbItemImportance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:isIndicator="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                <ImageView
+                    android:id="@+id/ivCategoryDesc"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintStart_toStartOf="@+id/ivSubtitleDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/ivSubtitleDesc"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Category:"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivCategoryDesc"
+                    app:layout_constraintStart_toEndOf="@+id/ivCategoryDesc"
+                    app:layout_constraintTop_toTopOf="@+id/ivCategoryDesc" />
+
+                <ImageView
+                    android:id="@+id/ivImportanceDesc"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivCategoryDesc"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Importance:"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivImportanceDesc"
+                    app:layout_constraintStart_toStartOf="@+id/textView25"
+                    app:layout_constraintTop_toTopOf="@+id/ivImportanceDesc" />
+
+                <SeekBar
+                    android:id="@+id/sbImportanceBarDesc"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:max="4"
+                    android:progress="0"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView26"
+                    app:layout_constraintStart_toEndOf="@+id/textView26"
+                    app:layout_constraintTop_toTopOf="@+id/textView26" />
+
+                <TextView
+                    android:id="@+id/tvImportanceDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="TextView"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/sbImportanceBarDesc"
+                    app:layout_constraintStart_toEndOf="@+id/sbImportanceBarDesc"
+                    app:layout_constraintTop_toTopOf="@+id/sbImportanceBarDesc" />
+
+                <ImageView
+                    android:id="@+id/ivPaidDesc"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="36dp"
+                    android:src="@drawable/ic_money_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivImportanceDesc" />
+
+                <Switch
+                    android:id="@+id/swPaidDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Paid:"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivPaidDesc"
+                    app:layout_constraintStart_toStartOf="@+id/textView26"
+                    app:layout_constraintTop_toTopOf="@+id/ivPaidDesc" />
+
+                <TextView
+                    android:id="@+id/tvPaidDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="TextView"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/swPaidDesc"
+                    app:layout_constraintStart_toEndOf="@+id/swPaidDesc"
+                    app:layout_constraintTop_toTopOf="@+id/swPaidDesc" />
+
+                <ImageView
+                    android:id="@+id/ivDueToDesc"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="36dp"
+                    android:src="@drawable/ic_date_image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivPaidDesc" />
+
+                <TextView
+                    android:id="@+id/textView31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Due to:"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivDueToDesc"
+                    app:layout_constraintStart_toStartOf="@+id/swPaidDesc"
+                    app:layout_constraintTop_toTopOf="@+id/ivDueToDesc" />
+
+                <TextView
+                    android:id="@+id/tvDueToDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="TextView"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView31"
+                    app:layout_constraintStart_toEndOf="@+id/textView31"
+                    app:layout_constraintTop_toTopOf="@+id/textView31" />
+
+                <Spinner
+                    android:id="@+id/spCategoryDesc"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:entries="@array/categories"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView25"
+                    app:layout_constraintStart_toEndOf="@+id/textView25"
+                    app:layout_constraintTop_toTopOf="@+id/textView25" />
+
+                <ImageView
+                    android:id="@+id/ivTitleDesc"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_image_title" />
+
+                <ImageView
+                    android:id="@+id/ivSubtitleDesc"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintStart_toStartOf="@+id/ivTitleDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/ivTitleDesc"
+                    app:srcCompat="@drawable/ic_image_subtitle" />
+
+                <TextView
+                    android:id="@+id/textView34"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Title:"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivTitleDesc"
+                    app:layout_constraintStart_toEndOf="@+id/ivTitleDesc"
+                    app:layout_constraintTop_toTopOf="@+id/ivTitleDesc" />
+
+                <TextView
+                    android:id="@+id/textView35"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Subtitle"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivSubtitleDesc"
+                    app:layout_constraintStart_toEndOf="@+id/ivSubtitleDesc"
+                    app:layout_constraintTop_toTopOf="@+id/ivSubtitleDesc" />
+
+                <EditText
+                    android:id="@+id/etTitleDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:ems="10"
+                    android:hint="Set title"
+                    android:inputType="text"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView34"
+                    app:layout_constraintStart_toEndOf="@+id/textView34"
+                    app:layout_constraintTop_toTopOf="@+id/textView34" />
+
+                <EditText
+                    android:id="@+id/etSubtitleDesc"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:ems="10"
+                    android:hint="Set subtitle"
+                    android:inputType="text"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView35"
+                    app:layout_constraintStart_toEndOf="@+id/textView35"
+                    app:layout_constraintTop_toTopOf="@+id/textView35" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
     <Button
-        android:id="@+id/btnBackDesc"
+        android:id="@+id/btnSaveDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/swPaid" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:text="Due to"
+        android:layout_marginStart="5dp"
+        android:text="Save"
         app:layout_constraintBottom_toBottomOf="@+id/btnBackDesc"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tvDateDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/textView14"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toTopOf="@+id/textView14" />
-
-    <Switch
-        android:id="@+id/swPaid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:clickable="false"
-        android:text="Paid"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rbItemImportance" />
+        app:layout_constraintTop_toTopOf="@+id/btnBackDesc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

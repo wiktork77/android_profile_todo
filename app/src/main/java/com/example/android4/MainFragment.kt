@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.Navigation
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,6 +57,9 @@ class MainFragment : Fragment() {
             val res = sp.getInt("avatar", R.drawable.ic_other_image)
             println(res)
             avatar.setImageResource(res)
+        }
+        avatar.setOnClickListener { _ ->
+            Navigation.findNavController(view).navigate(R.id.mainToEdit)
         }
     }
 

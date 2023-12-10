@@ -60,7 +60,7 @@ class AddTodoFragment : Fragment() {
         addBtn.setOnClickListener { _ ->
             val title: String = view.findViewById<EditText?>(R.id.etAddTodoTitle).text.toString()
             val subtitle: String = view.findViewById<EditText?>(R.id.etAddTodoSubtitle).text.toString()
-            val category: Category = parseCategory(view.findViewById<Spinner?>(R.id.spAddTodoSpinner).selectedItem.toString())
+            val category: Category = Utilities.parseCategory(view.findViewById<Spinner?>(R.id.spAddTodoSpinner).selectedItem.toString())
             val date: String = view.findViewById<EditText?>(R.id.etAddTodoDueTo).text.toString()
             val importance: Int = view.findViewById<SeekBar?>(R.id.sbAddTodoImportance).progress + 1
             val isPaid: Boolean = view.findViewById<Switch?>(R.id.swAddTodoIsPaid).isChecked
@@ -99,16 +99,4 @@ class AddTodoFragment : Fragment() {
             }
     }
 
-    private fun parseCategory(cat: String): Category {
-        return when (cat.lowercase()) {
-            "car" -> Category.CAR
-            "laundry" -> Category.LAUNDRY
-            "groceries" -> Category.GROCERIES
-            "cleaning" -> Category.CLEANING
-            "exercise" -> Category.EXERCISE
-            "meeting" -> Category.MEETING
-            "other" -> Category.OTHER
-            else -> Category.OTHER
-        }
-    }
 }
