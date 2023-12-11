@@ -7,12 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.findFragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import java.io.Serializable
 
 class TodoAdapter(
-    private val data: MutableList<Todo>
+    private val data: MutableList<Todo>,
 ): RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(), Serializable {
 
 
@@ -58,6 +62,22 @@ class TodoAdapter(
             }
             Navigation.findNavController(holder.itemView.parent as View).navigate(R.id.todoToDescription, bundle)
         }
+        holder.itemView.setOnLongClickListener(object: View.OnLongClickListener{
+            override fun onLongClick(p0: View?): Boolean {
+                val builder: AlertDialog.Builder = AlertDialog.Builder(
+                    requireNotNull(p0?.context)
+                )
+                builder.setTitle("Are you sure you want to delete?")
+                    .setPositiveButton("Yes") {dialog, which ->
+                        removeTodo(position)
+                    }.setNegativeButton("Cancel") {dialog, which ->
+                    }
+
+                val dialog: AlertDialog = builder.create()
+                dialog.show()
+                return true
+            }
+        })
     }
 
     fun addTodo(todo: Todo) {
@@ -67,6 +87,11 @@ class TodoAdapter(
 
     fun editTodo(position: Int, todo: Todo) {
         data[position] = todo
+        notifyDataSetChanged()
+    }
+
+    fun removeTodo(position: Int) {
+        data.removeAt(position)
         notifyDataSetChanged()
     }
 

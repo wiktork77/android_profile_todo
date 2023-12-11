@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="115dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivNavHeaderImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/circular"
+        app:srcCompat="@drawable/ic_manage_image" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/ivNavHeaderImage"
+        app:layout_constraintStart_toEndOf="@+id/ivNavHeaderImage"
+        app:layout_constraintTop_toTopOf="@+id/ivNavHeaderImage">
+
+        <TextView
+            android:id="@+id/tvOwnerNameNav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manage"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tvOwnerInfo"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:text="TextView"
+            android:textColor="#973A3939" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import com.google.android.material.navigation.NavigationView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,6 +66,8 @@ class EditTextDataFragment : Fragment() {
                 spEdit.putString("name", p0.toString())
                 println(p0.toString())
                 spEdit.apply()
+                val navView = requireActivity().findViewById<NavigationView>(R.id.nvMainNavView)
+                Utilities.setupNavHeader(navView, sp)
             }
         })
         infoEdit.addTextChangedListener(object: TextWatcher {
@@ -79,6 +82,8 @@ class EditTextDataFragment : Fragment() {
                 spEdit.putString("info", p0.toString())
                 println(p0.toString())
                 spEdit.apply()
+                val navView = requireActivity().findViewById<NavigationView>(R.id.nvMainNavView)
+                Utilities.setupNavHeader(navView, sp)
             }
         })
     }

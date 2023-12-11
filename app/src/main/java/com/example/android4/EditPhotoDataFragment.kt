@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TableLayout
 import android.widget.TableRow
 import androidx.navigation.Navigation
+import com.google.android.material.navigation.NavigationView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,7 +66,9 @@ class EditPhotoDataFragment : Fragment() {
                     val spEdit = sp.edit()
                     val res: Int = resources[(i*3) + j]!!
                     spEdit.putInt("avatar", res)
-                    spEdit.commit()
+                    spEdit.apply()
+                    val navView = requireActivity().findViewById<NavigationView>(R.id.nvMainNavView)
+                    Utilities.setupNavHeader(navView, sp)
                     Navigation.findNavController(view).navigate(R.id.editToMain)
                 }
             }

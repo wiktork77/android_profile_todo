@@ -90,9 +90,7 @@ class DescriptionFragment : Fragment() {
 
     private fun bindViews(view: View) {
         val views = retrieveViews(view)
-        val adapter: TodoAdapter = arguments?.getSerializable("adapter") as TodoAdapter
-
-
+        val adapter: TodoAdapter = Setup.getAdapter()
 
 
         (views["dateText"] as TextView).setOnClickListener { _ ->

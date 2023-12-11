@@ -2,6 +2,7 @@ package com.example.android4
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
+import com.google.android.material.navigation.NavigationView
 
 class Utilities {
     companion object {
@@ -95,13 +97,24 @@ class Utilities {
         }
 
         fun handleDate(manager: FragmentManager, container: TextView) {
-            val dataSplit = Utilities.dateTextToDate(container.text.toString())
-            val picker = DatePickerFragment(
-                container,
-                dataSplit["year"],
-                dataSplit["month"],
-                dataSplit["day"]
-            )
+            var picker: DatePickerFragment? = null
+            if (container.text.length == 0) {
+                picker = DatePickerFragment(
+                    container,
+                    null,
+                    null,
+                    null
+                )
+            } else {
+                val dataSplit = Utilities.dateTextToDate(container.text.toString())
+                picker = DatePickerFragment(
+                    container,
+                    dataSplit["year"],
+                    dataSplit["month"],
+                    dataSplit["day"]
+                )
+            }
+
             picker.show(manager, "datePicker")
         }
 
@@ -112,6 +125,19 @@ class Utilities {
                 "month" to split[1].toInt(),
                 "year" to split[2].toInt()
             )
+        }
+
+        fun setupNavHeader(navView: NavigationView, sp: SharedPreferences) {
+            val header = navView.getHeaderView(0)
+            val ownerImg: ImageView = header.findViewById(R.id.ivNavHeaderImage)
+            val ownerName: TextView = header.findViewById(R.id.tvOwnerNameNav)
+            val ownerInfo: TextView = header.findViewById(R.id.tvOwnerInfo)
+            val res = sp.getInt("avatar", R.drawable.ic_other_image)
+            val name = sp.getString("name", "Name")
+            val info = sp.getString("info", "info")
+            ownerImg.setImageResource(res)
+            ownerName.text = name
+            ownerInfo.text = info
         }
     }
 }

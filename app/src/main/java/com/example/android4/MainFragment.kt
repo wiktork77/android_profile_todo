@@ -58,9 +58,6 @@ class MainFragment : Fragment() {
             println(res)
             avatar.setImageResource(res)
         }
-        avatar.setOnClickListener { _ ->
-            Navigation.findNavController(view).navigate(R.id.mainToEdit)
-        }
     }
 
     companion object {

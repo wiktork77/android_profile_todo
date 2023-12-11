@@ -7,18 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".AddTodoFragment">
 
-    <EditText
-        android:id="@+id/etAddTodoDueTo"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView7"
-        app:layout_constraintEnd_toEndOf="@+id/spAddTodoSpinner"
-        app:layout_constraintStart_toStartOf="@+id/spAddTodoSpinner"
-        app:layout_constraintTop_toTopOf="@+id/textView7" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -145,8 +133,7 @@
         android:max="4"
         android:progress="0"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
-        app:layout_constraintEnd_toEndOf="@+id/etAddTodoDueTo"
-        app:layout_constraintStart_toStartOf="@+id/etAddTodoDueTo"
+        app:layout_constraintStart_toStartOf="@+id/ivDatePicker"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
 
     <Switch
@@ -185,5 +172,22 @@
         app:layout_constraintEnd_toEndOf="@+id/sbAddTodoImportance"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <ImageView
+        android:id="@+id/ivDatePicker"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="@+id/spAddTodoSpinner"
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        app:srcCompat="@drawable/ic_date_image" />
+
+    <TextView
+        android:id="@+id/tvAddDueToContainer"
+        android:layout_width="144dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivDatePicker"
+        app:layout_constraintEnd_toEndOf="@+id/spAddTodoSpinner"
+        app:layout_constraintTop_toTopOf="@+id/ivDatePicker" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

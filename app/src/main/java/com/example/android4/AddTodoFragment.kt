@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.Spinner
 import android.widget.Switch
@@ -50,18 +51,21 @@ class AddTodoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val cancelBtn: Button = view.findViewById(R.id.btnCancelTodo)
         val addBtn: Button = view.findViewById(R.id.btnAddTodo)
-        val adapter: TodoAdapter = arguments?.getSerializable("adapter") as TodoAdapter
+        val adapter: TodoAdapter = Setup.getAdapter()
+        val datePicker: ImageView = view.findViewById(R.id.ivDatePicker)
+        val dateContainer: TextView = view.findViewById(R.id.tvAddDueToContainer)
+
+        datePicker.setOnClickListener {
+            Utilities.handleDate(parentFragmentManager, dateContainer)
+        }
         cancelBtn.setOnClickListener { _ ->
-            val bundle = Bundle().apply {
-                putSerializable("adapter", adapter)
-            }
-            Navigation.findNavController(view).navigate(R.id.addToTodos, bundle)
+            Navigation.findNavController(view).navigate(R.id.addToTodos)
         }
         addBtn.setOnClickListener { _ ->
             val title: String = view.findViewById<EditText?>(R.id.etAddTodoTitle).text.toString()
             val subtitle: String = view.findViewById<EditText?>(R.id.etAddTodoSubtitle).text.toString()
             val category: Category = Utilities.parseCategory(view.findViewById<Spinner?>(R.id.spAddTodoSpinner).selectedItem.toString())
-            val date: String = view.findViewById<EditText?>(R.id.etAddTodoDueTo).text.toString()
+            val date: String = dateContainer.text.toString()
             val importance: Int = view.findViewById<SeekBar?>(R.id.sbAddTodoImportance).progress + 1
             val isPaid: Boolean = view.findViewById<Switch?>(R.id.swAddTodoIsPaid).isChecked
             val description: String = view.findViewById<EditText?>(R.id.etAddTodoDescription).text.toString()

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,17 +46,7 @@ class TodosFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val rv: RecyclerView = view.findViewById(R.id.rvTodos)
-        val repo: DataRepository = DataRepository.getInstance()
-
-        val navigatedAdapter: TodoAdapter? = arguments?.getSerializable("adapter") as TodoAdapter?
-        var adapter: TodoAdapter? = null
-        if (navigatedAdapter == null) {
-            val data = repo.getData()
-            adapter = TodoAdapter(data)
-        } else {
-            adapter = navigatedAdapter
-        }
-
+        val adapter: TodoAdapter = Setup.getAdapter()
 
         val fab: FloatingActionButton = view.findViewById(R.id.fabAddTodo)
         rv.adapter = adapter
@@ -67,10 +58,7 @@ class TodosFragment : Fragment() {
             )
         )
         fab.setOnClickListener { _ ->
-            val bundle = Bundle().apply {
-                putSerializable("adapter", adapter)
-            }
-            Navigation.findNavController(view).navigate(R.id.todosToAdd, bundle)
+            Navigation.findNavController(view).navigate(R.id.todosToAdd)
         }
     }
 
