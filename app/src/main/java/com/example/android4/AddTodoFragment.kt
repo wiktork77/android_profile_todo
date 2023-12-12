@@ -16,16 +16,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.Navigation
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AddTodoFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AddTodoFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -43,7 +36,6 @@ class AddTodoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_todo, container, false)
     }
 
@@ -51,15 +43,27 @@ class AddTodoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val cancelBtn: Button = view.findViewById(R.id.btnCancelTodo)
         val addBtn: Button = view.findViewById(R.id.btnAddTodo)
-        val adapter: TodoAdapter = Setup.getAdapter()
         val datePicker: ImageView = view.findViewById(R.id.ivDatePicker)
         val dateContainer: TextView = view.findViewById(R.id.tvAddDueToContainer)
+        val itemArg: DBTodo? = arguments?.getSerializable("editItem") as DBTodo?
+
+        if (itemArg != null) {
+            fillData(view, itemArg)
+        }
 
         datePicker.setOnClickListener {
             Utilities.handleDate(parentFragmentManager, dateContainer)
         }
         cancelBtn.setOnClickListener { _ ->
-            Navigation.findNavController(view).navigate(R.id.addToTodos)
+            if (itemArg != null) {
+                val bundle = Bundle().apply {
+                    putSerializable("item", itemArg)
+                }
+                Navigation.findNavController(view).navigate(R.id.addToDescription, bundle)
+            } else {
+                Navigation.findNavController(view).navigate(R.id.addToTodos)
+            }
+
         }
         addBtn.setOnClickListener { _ ->
             val title: String = view.findViewById<EditText?>(R.id.etAddTodoTitle).text.toString()
@@ -69,18 +73,33 @@ class AddTodoFragment : Fragment() {
             val importance: Int = view.findViewById<SeekBar?>(R.id.sbAddTodoImportance).progress + 1
             val isPaid: Boolean = view.findViewById<Switch?>(R.id.swAddTodoIsPaid).isChecked
             val description: String = view.findViewById<EditText?>(R.id.etAddTodoDescription).text.toString()
-            val newTodo: Todo = Todo(title, subtitle, category, description, date, importance, isPaid)
+            val newTodo = DBTodo(title, subtitle, category, description, date, importance, isPaid)
             if (newTodo.isValid()) {
-                val bundle = Bundle().apply {
-                    adapter.addTodo(newTodo)
-                    putSerializable("adapter", adapter)
+                val repo = MyRepository.getInstance(requireContext())
+                if (itemArg != null) {
+                    itemArg.changeTo(newTodo)
+                    repo.updateItem(itemArg)
+                } else {
+                    repo.addItem(newTodo)
                 }
-                Navigation.findNavController(view).navigate(R.id.addToTodos, bundle)
+                Navigation.findNavController(view).navigate(R.id.addToTodos)
             } else {
-                Toast.makeText(requireContext(), "You must fill all inputs!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Fill all inputs!", Toast.LENGTH_SHORT).show()
             }
         }
+    }
 
+
+    private fun fillData(view: View, item: DBTodo) {
+        view.findViewById<TextView>(R.id.tvAddTodoHeader).text = "Modify ${item.title}"
+        view.findViewById<Button>(R.id.btnAddTodo).text = "Save"
+        view.findViewById<EditText?>(R.id.etAddTodoTitle).setText(item.title)
+        view.findViewById<EditText?>(R.id.etAddTodoSubtitle).setText(item.subTitle)
+        view.findViewById<Spinner?>(R.id.spAddTodoSpinner).setSelection(item.category.ordinal)
+        view.findViewById<TextView>(R.id.tvAddDueToContainer).setText(item.dueTo)
+        view.findViewById<SeekBar?>(R.id.sbAddTodoImportance).progress = item.importance - 1
+        view.findViewById<Switch?>(R.id.swAddTodoIsPaid).isChecked = item.paid
+        view.findViewById<EditText?>(R.id.etAddTodoDescription).setText(item.description)
     }
 
     companion object {

@@ -139,5 +139,15 @@ class Utilities {
             ownerName.text = name
             ownerInfo.text = info
         }
+
+        fun getAvailableImages(): Array<Int> {
+            val imageArr: Array<Int> = arrayOf(
+                R.drawable.image_ape,
+                R.drawable.image_orang,
+                R.drawable.image_cat,
+                R.drawable.image_rock
+            )
+            return imageArr
+        }
     }
 }

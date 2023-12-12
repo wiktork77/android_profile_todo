@@ -10,8 +10,8 @@
         android:id="@+id/btnBackDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -73,14 +73,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="36dp"
                     android:text="Description"
-                    android:textSize="18dp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
-                <EditText
-                    android:id="@+id/etDescription"
+                <TextView
+                    android:id="@+id/tvDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -89,6 +89,7 @@
                     android:ems="10"
                     android:gravity="start|top"
                     android:inputType="textMultiLine"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView33" />
@@ -131,18 +132,6 @@
                     app:layout_constraintStart_toStartOf="@+id/textView25"
                     app:layout_constraintTop_toTopOf="@+id/ivImportanceDesc" />
 
-                <SeekBar
-                    android:id="@+id/sbImportanceBarDesc"
-                    style="@style/Widget.AppCompat.SeekBar.Discrete"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:max="4"
-                    android:progress="0"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView26"
-                    app:layout_constraintStart_toEndOf="@+id/textView26"
-                    app:layout_constraintTop_toTopOf="@+id/textView26" />
-
                 <TextView
                     android:id="@+id/tvImportanceDesc"
                     android:layout_width="wrap_content"
@@ -150,9 +139,9 @@
                     android:layout_marginStart="10dp"
                     android:text="TextView"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/sbImportanceBarDesc"
-                    app:layout_constraintStart_toEndOf="@+id/sbImportanceBarDesc"
-                    app:layout_constraintTop_toTopOf="@+id/sbImportanceBarDesc" />
+                    app:layout_constraintBottom_toBottomOf="@+id/rbImportanceBar"
+                    app:layout_constraintStart_toEndOf="@+id/rbImportanceBar"
+                    app:layout_constraintTop_toTopOf="@+id/rbImportanceBar" />
 
                 <ImageView
                     android:id="@+id/ivPaidDesc"
@@ -179,6 +168,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text="TextView"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/swPaidDesc"
                     app:layout_constraintStart_toEndOf="@+id/swPaidDesc"
@@ -214,13 +204,17 @@
                     app:layout_constraintStart_toEndOf="@+id/textView31"
                     app:layout_constraintTop_toTopOf="@+id/textView31" />
 
-                <Spinner
-                    android:id="@+id/spCategoryDesc"
-                    android:layout_width="180dp"
+                <TextView
+                    android:id="@+id/tvCategoryDesc"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:entries="@array/categories"
+                    android:hint="Sample category"
+                    android:textAlignment="viewStart"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/textView25"
+                    app:layout_constraintEnd_toEndOf="@+id/tvSubtitleDesc"
                     app:layout_constraintStart_toEndOf="@+id/textView25"
                     app:layout_constraintTop_toTopOf="@+id/textView25" />
 
@@ -258,36 +252,52 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Subtitle"
+                    android:text="Subtitle:"
                     app:layout_constraintBottom_toBottomOf="@+id/ivSubtitleDesc"
                     app:layout_constraintStart_toEndOf="@+id/ivSubtitleDesc"
                     app:layout_constraintTop_toTopOf="@+id/ivSubtitleDesc" />
 
-                <EditText
-                    android:id="@+id/etTitleDesc"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/tvTitleDesc"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:ems="10"
-                    android:hint="Set title"
+                    android:hint="Sample title"
                     android:inputType="text"
-                    android:textSize="14sp"
+                    android:textAlignment="viewStart"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/textView34"
+                    app:layout_constraintEnd_toEndOf="@+id/tvSubtitleDesc"
                     app:layout_constraintStart_toEndOf="@+id/textView34"
                     app:layout_constraintTop_toTopOf="@+id/textView34" />
 
-                <EditText
-                    android:id="@+id/etSubtitleDesc"
+                <TextView
+                    android:id="@+id/tvSubtitleDesc"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:ems="10"
                     android:hint="Set subtitle"
                     android:inputType="text"
-                    android:textSize="14sp"
+                    android:textAlignment="viewStart"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/textView35"
                     app:layout_constraintStart_toEndOf="@+id/textView35"
                     app:layout_constraintTop_toTopOf="@+id/textView35" />
+
+                <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                    android:id="@+id/rbImportanceBar"
+                    style="@style/Widget.MaterialRatingBar.RatingBar"
+                    android:layout_width="160dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="10dp"
+                    android:isIndicator="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView26"
+                    app:layout_constraintStart_toEndOf="@+id/textView26"
+                    app:layout_constraintTop_toTopOf="@+id/textView26" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -295,13 +305,13 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/btnSaveDesc"
+        android:id="@+id/btnModifyDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="@+id/btnBackDesc"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnBackDesc" />
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="25dp"
+        android:text="Modify"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
