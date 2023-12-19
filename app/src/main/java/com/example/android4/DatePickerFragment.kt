@@ -19,7 +19,7 @@ class DatePickerFragment(
         if (year == null)
             year = c.get(Calendar.YEAR)
         if (month == null)
-            month = c.get(Calendar.MONTH)
+            month = c.get(Calendar.MONTH) + 1
         if (day == null)
             day = c.get(Calendar.DAY_OF_MONTH)
 

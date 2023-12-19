@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import java.io.Serializable
 
 @Entity(tableName = "todo")
-class DBTodo(
+data class DBTodo(
     var title: String,
     var subTitle: String,
     var category: Category,

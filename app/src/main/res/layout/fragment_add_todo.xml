@@ -92,7 +92,7 @@
 
     <EditText
         android:id="@+id/etAddTodoTitle"
-        android:layout_width="180dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:ems="10"
@@ -105,7 +105,7 @@
 
     <EditText
         android:id="@+id/etAddTodoSubtitle"
-        android:layout_width="180dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
@@ -117,7 +117,7 @@
 
     <Spinner
         android:id="@+id/spAddTodoSpinner"
-        android:layout_width="180dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:entries="@array/categories"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
@@ -128,7 +128,7 @@
     <SeekBar
         android:id="@+id/sbAddTodoImportance"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="180dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:max="4"
         android:progress="0"
@@ -148,19 +148,17 @@
         android:id="@+id/btnAddTodo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
         android:text="Add"
-        app:layout_constraintStart_toStartOf="@+id/etAddTodoDescription"
-        app:layout_constraintTop_toBottomOf="@+id/etAddTodoDescription" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etAddTodoDescription" />
 
     <Button
         android:id="@+id/btnCancelTodo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="Cancel"
-        app:layout_constraintEnd_toEndOf="@+id/etAddTodoDescription"
-        app:layout_constraintTop_toBottomOf="@+id/etAddTodoDescription" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/etAddTodoDescription" />
 
     <EditText
         android:id="@+id/etAddTodoDescription"
@@ -184,10 +182,11 @@
 
     <TextView
         android:id="@+id/tvAddDueToContainer"
-        android:layout_width="144dp"
+        android:layout_width="100dp"
         android:layout_height="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/ivDatePicker"
         app:layout_constraintEnd_toEndOf="@+id/spAddTodoSpinner"
-        app:layout_constraintTop_toTopOf="@+id/ivDatePicker" />
+        app:layout_constraintTop_toTopOf="@+id/ivDatePicker"
+        app:layout_constraintVertical_bias="0.333" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

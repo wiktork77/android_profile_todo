@@ -134,11 +134,12 @@
 
                 <TextView
                     android:id="@+id/tvImportanceDesc"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text="TextView"
                     android:textStyle="bold"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="@+id/rbImportanceBar"
                     app:layout_constraintStart_toEndOf="@+id/rbImportanceBar"
                     app:layout_constraintTop_toTopOf="@+id/rbImportanceBar" />

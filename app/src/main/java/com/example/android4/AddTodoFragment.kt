@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
@@ -82,6 +83,7 @@ class AddTodoFragment : Fragment() {
                 } else {
                     repo.addItem(newTodo)
                 }
+                MyListAdapter.getInstance().submitList(repo.getData())
                 Navigation.findNavController(view).navigate(R.id.addToTodos)
             } else {
                 Toast.makeText(requireContext(), "Fill all inputs!", Toast.LENGTH_SHORT).show()

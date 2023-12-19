@@ -33,11 +33,32 @@
         android:id="@+id/tvMainInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Student pwr ist"
+        android:layout_marginBottom="20dp"
+        android:text="Select storage type"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/ivMainAvatar"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="@+id/ivMainAvatar"
-        app:layout_constraintTop_toBottomOf="@+id/ivMainAvatar" />
+        app:layout_constraintBottom_toTopOf="@+id/rgMainStorage"
+        app:layout_constraintEnd_toEndOf="@+id/rgMainStorage"
+        app:layout_constraintStart_toStartOf="@+id/rgMainStorage" />
+
+    <RadioGroup
+        android:id="@+id/rgMainStorage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/rbOptApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="App storage" />
+
+        <RadioButton
+            android:id="@+id/rbOptShared"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Shared storage" />
+    </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

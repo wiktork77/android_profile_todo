@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_editFragment_to_todosFragment"
             app:destination="@id/todosFragment" />
+        <action
+            android:id="@+id/editToSlider"
+            app:destination="@id/photoSliderFragment" />
     </fragment>
     <fragment
         android:id="@+id/descriptionFragment"
@@ -82,5 +85,20 @@
         <action
             android:id="@+id/addToDescription"
             app:destination="@id/descriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoSliderFragment"
+        android:name="com.example.android4.PhotoSliderFragment"
+        android:label="fragment_photo_slider"
+        tools:layout="@layout/fragment_photo_slider" >
+        <action
+            android:id="@+id/sliderToEdit"
+            app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/sliderToMain"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_photoSliderFragment_to_todosFragment"
+            app:destination="@id/todosFragment" />
     </fragment>
 </navigation>

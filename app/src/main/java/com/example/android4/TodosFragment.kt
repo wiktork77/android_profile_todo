@@ -24,6 +24,9 @@ class TodosFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        val adapter = MyListAdapter.getInstance()
+        val repo = MyRepository.getInstance(requireContext())
+        adapter.submitList(repo.getData())
     }
 
     override fun onCreateView(
@@ -35,13 +38,9 @@ class TodosFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val rv: RecyclerView = view.findViewById(R.id.rvTodos)
-        val repo = MyRepository.getInstance(requireContext())
-        val adapter = TodoAdapter(repo.getData())
         val fab: FloatingActionButton = view.findViewById(R.id.fabAddTodo)
-
-        rv.adapter = adapter
+        rv.adapter = MyListAdapter.getInstance()
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.addItemDecoration(
             DividerItemDecoration(
